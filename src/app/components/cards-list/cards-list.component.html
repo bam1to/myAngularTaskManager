@@ -1,0 +1,4 @@
+<div class="container">
+    <app-card *ngFor="let card of cardsList" (remove)="updateList()" [card]='card'></app-card>
+    <app-add-card></app-add-card>
+</div>

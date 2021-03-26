@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="card__header">
+        <h5 class="card__title">{{card?.title}}</h5>
+        <small class="card__date">{{card?.date | dateConverter}}</small>
+    </div>
+    <div class="card__body">
+        <p class="taskDescription">{{card?.taskBody}}</p>
+    </div>
+    <div class="card__footer">
+        <button class="btn btn-outline-primary btn-sm" (click)="openModal(content)">Full task</button>
+        <button class="btn btn-outline-danger btn-sm ms-1" (click)="removeCard(card?.id)">Remove</button>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Task update</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()">
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group popup">
+            <label for="taskForm">Enter new information</label>
+            <fieldset class="input-group">
+                <form action="#" class="popup__form" id="taskForm" [formGroup]="newTaskControl">
+                    <div class="input-group mb-2">
+                        <input type="text" class="form-control" placeholder="Task name" formControlName="title"
+                            [value]="card?.title">
+                    </div>
+                    <div class="input-group mb-2">
+                        <input class="form-control" placeholder="Button on the side" readonly name="dp" ngbDatepicker
+                            #dp="ngbDatepicker" [markDisabled]="isDisabled" formControlName="date"
+                            [value]="card?.date | dateConverter">
+                        <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"></button>
+                    </div>
+                    <div class="input-group mb-2">
+                        <textarea name="taskBody" class="form-control" cols="30" rows="10" placeholder="Task's body"
+                            formControlName="taskBody" [value]=" card?.taskBody"></textarea>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" ngbAutofocus [disabled]='!newTaskControl.valid'
+            (click)="modal.close('Save click'); rewriteCard()">Rewrite</button>
+    </div>
+</ng-template>

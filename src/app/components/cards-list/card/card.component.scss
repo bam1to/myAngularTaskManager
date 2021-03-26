@@ -1,0 +1,52 @@
+:host {
+    margin: 0 auto;
+    width: 226.78px;
+    max-width: 226.78px;
+    .card {
+        max-height: 300px;
+        width: 100%;
+        padding: 20px;
+        border: 1px dashed #ccc;
+        border-radius: 10px;
+        height: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &__header,
+        &__body,
+        &__footer {
+            padding: 0 10px;
+            max-height: 52px;
+        }
+
+        &__body {
+            .taskDescription {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+
+        &__title {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            margin-top: 0;
+            max-height: 52px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        &__date {
+            color: #ccc;
+            font-style: italic;
+        }
+        &__footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
