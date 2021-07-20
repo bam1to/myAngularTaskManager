@@ -13,12 +13,12 @@
         <div class="form-group popup">
             <label for="taskForm">New task adding</label>
             <fieldset class="input-group">
-                <form class="popup__form" id="taskForm" [formGroup]="fullTaskControl">
+                <form class="popup__form" style="width: 100%;" id="taskForm" [formGroup]="fullTaskControl">
                     <div class="input-group mb-2">
                         <input type="text" class="form-control" placeholder="Task name" formControlName="title">
                     </div>
                     <div class="input-group mb-2">
-                        <input class="form-control" placeholder="Button on the side" readonly name="dp" ngbDatepicker
+                        <input class="form-control" placeholder="Select date" readonly name="dp" ngbDatepicker
                             #dp="ngbDatepicker" [(ngModel)]="model" [markDisabled]="isDisabled" formControlName="date">
                         <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"></button>
                     </div>

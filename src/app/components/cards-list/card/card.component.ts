@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CardsService } from 'src/app/services/cards.service';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-card',
@@ -9,6 +10,8 @@ import { CardsService } from 'src/app/services/cards.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
+  faCalendarAlt = faCalendarAlt;
+
   @Input() card;
   @Output() remove = new EventEmitter<any>();
 

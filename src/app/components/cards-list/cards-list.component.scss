@@ -1,9 +1,8 @@
 :host {
-    .container {
-        width: 80%;
-        margin: 1rem auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1rem;
+    .card-container {
+        display: flex;
+        flex-direction: row;
+        overflow: visible;
+        margin-top: 4rem;
     }
 }

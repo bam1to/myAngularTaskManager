@@ -1,7 +1,8 @@
 :host {
-    margin: 0 auto;
     width: 226.78px;
+    min-width: 226.78px;
     max-width: 226.78px;
+    margin-left: 1rem;
     .card {
         max-height: 300px;
         width: 100%;

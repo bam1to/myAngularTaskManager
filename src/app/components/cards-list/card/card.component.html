@@ -23,7 +23,7 @@
         <div class="form-group popup">
             <label for="taskForm">Enter new information</label>
             <fieldset class="input-group">
-                <form action="#" class="popup__form" id="taskForm" [formGroup]="newTaskControl">
+                <form class="popup__form" style="width: 100%;" id="taskForm" [formGroup]="newTaskControl">
                     <div class="input-group mb-2">
                         <input type="text" class="form-control" placeholder="Task name" formControlName="title"
                             [value]="card?.title">
@@ -32,7 +32,9 @@
                         <input class="form-control" placeholder="Button on the side" readonly name="dp" ngbDatepicker
                             #dp="ngbDatepicker" [markDisabled]="isDisabled" formControlName="date"
                             [value]="card?.date | dateConverter">
-                        <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"></button>
+                        <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                            <fa-icon [icon]="faCalendarAlt"></fa-icon>
+                        </button>
                     </div>
                     <div class="input-group mb-2">
                         <textarea name="taskBody" class="form-control" cols="30" rows="10" placeholder="Task's body"

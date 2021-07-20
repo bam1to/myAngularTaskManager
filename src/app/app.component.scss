@@ -4,5 +4,9 @@
         text-align: center;
         line-height: 50px;
         border-bottom: 1px dashed #000;
+        position: fixed;
+        min-width: 100%;
+        z-index: 1;
+        top: 0;
     }
 }
