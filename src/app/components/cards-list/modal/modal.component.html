@@ -1,0 +1,39 @@
+<ng-template #modal>
+    <div class="modal-header">
+        <h5 class="modal-title">{{ modalConfig.modalTitle }}</h5>
+    </div>
+    <div class="modal-body">
+        <fieldset class="input-group">
+            <form class="popup__form" style="width: 100%;" id="taskForm" [formGroup]="fullTaskControl">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" placeholder="Task name" formControlName="title"
+                        value={{modalConfig?.inputTitle}}>
+                </div>
+                <div class="input-group mb-2">
+                    <input class="form-control" placeholder="Select date" readonly name="dp" ngbDatepicker
+                        #dp="ngbDatepicker" [(ngModel)]="model" [markDisabled]="isDisabled" formControlName="date"
+                        value={{modalConfig?.inputDate}}>
+                    <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                        <fa-icon [icon]="faCalendarAlt"></fa-icon>
+                    </button>
+                </div>
+                <div class="input-group">
+                    <textarea name="taskBody" class="form-control" cols="30" rows="10" placeholder="Task's body"
+                        formControlName="taskBody">{{modalConfig?.inputBody}}</textarea>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="dismiss()"
+            *ngIf="modalConfig.hideDismissButton === undefined || !modalConfig.hideDismissButton()"
+            [disabled]="modalConfig.disableDismissButton !== undefined && modalConfig.disableDismissButton()">
+            {{ modalConfig.dismissButtonLabel }}
+        </button>
+        <button type="button" class="btn btn-outline-primary" (click)="close()"
+            *ngIf="modalConfig.hideCloseButton === undefined || !modalConfig.hideCloseButton()"
+            [disabled]="modalConfig.disableCloseButton !== undefined && modalConfig.disableCloseButton()">
+            {{ modalConfig.closeButtonLabel }}
+        </button>
+    </div>
+</ng-template>

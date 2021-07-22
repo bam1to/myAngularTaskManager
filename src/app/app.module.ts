@@ -11,6 +11,7 @@ import { DateConverterPipe } from './pipes/date-converter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ModalComponent } from './components/cards-list/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AddCardComponent,
     CardsListComponent,
     DateConverterPipe,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

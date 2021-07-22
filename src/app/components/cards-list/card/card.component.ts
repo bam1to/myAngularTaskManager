@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { modalConfig } from 'src/app/interfaces/modal.interface';
 import { CardsService } from 'src/app/services/cards.service';
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { ModalComponent } from '../modal/modal.component';
+
 
 @Component({
   selector: 'app-card',
@@ -10,10 +12,12 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  faCalendarAlt = faCalendarAlt;
+
 
   @Input() card;
   @Output() remove = new EventEmitter<any>();
+  @ViewChild('modal') private modalComponent: ModalComponent
+
 
   public newTaskControl: FormGroup;
 
@@ -44,16 +48,21 @@ export class CardComponent implements OnInit {
     })
   }
 
+
+
+  async openModal() {
+    return await this.modalComponent.open()
+  }
+  public modalConfig: modalConfig = {
+    modalTitle: "Title",
+    dismissButtonLabel: 'Cancel',
+    closeButtonLabel: "Save",
+  };
+
   public removeCard(cardId): void {
     this._cardsService.removeCard(cardId);
     this.remove.emit();
   }
-
-  public openModal(content): void {
-    this._modalService.open(content);
-    console.log(this.card.date);
-  }
-
   public rewriteCard(): void {
     const newTaskInfo = {
       id: this.card.id,

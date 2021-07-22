@@ -1,37 +1,6 @@
-<div class="card" (click)="open(content)">
+<div class="card" (click)="openModal()">
     <span class="card__add">+</span>
     <span>Add the new task!</span>
 </div>
 
-<ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()">
-        </button>
-    </div>
-    <div class="modal-body">
-        <div class="form-group popup">
-            <label for="taskForm">New task adding</label>
-            <fieldset class="input-group">
-                <form class="popup__form" style="width: 100%;" id="taskForm" [formGroup]="fullTaskControl">
-                    <div class="input-group mb-2">
-                        <input type="text" class="form-control" placeholder="Task name" formControlName="title">
-                    </div>
-                    <div class="input-group mb-2">
-                        <input class="form-control" placeholder="Select date" readonly name="dp" ngbDatepicker
-                            #dp="ngbDatepicker" [(ngModel)]="model" [markDisabled]="isDisabled" formControlName="date">
-                        <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button"></button>
-                    </div>
-                    <div class="input-group">
-                        <textarea name="taskBody" class="form-control" cols="30" rows="10" placeholder="Task's body"
-                            formControlName="taskBody"></textarea>
-                    </div>
-                </form>
-            </fieldset>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" [disabled]='!fullTaskControl.valid' ngbAutofocus
-            (click)="saveNewCard(); modal.close('Save click')">Save</button>
-    </div>
-</ng-template>
+<app-modal #modal [modalConfig]="modalConfig"></app-modal>
